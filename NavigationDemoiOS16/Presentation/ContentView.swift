@@ -16,25 +16,28 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.show(index: 1, title: "First")
+                    storage.show(id: FirstView.id, title: "FirstView")
                 } label: {
                     Text("Go!")
                         .font(.system(size: 50, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                 }
             }
-            .navigationDestination(for: NavigationStorage.Destination.self) { destination in
+            .navigationDestination(for: String.self) { destination in
                 switch destination {
-                case .first:
+                case FirstView.id:
                     FirstView()
-                case .second:
+                case SecondView.id:
                     SecondView()
+                default:
+                    ContentView()
                 }
             }
         }
     }
     
     @ObservedObject private var storage = NavigationStorage.shared
+    @State private var isFirstViewShown = false
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -19,7 +19,7 @@ struct FirstView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    NavigationStorage.shared.show(index: 2, title: "Second")
+                    NavigationStorage.shared.show(id: SecondView.id, title: "SecondView")
                 } label: {
                     Text("Tap me!")
                         .font(.system(size: 30, weight: .heavy, design: .rounded))

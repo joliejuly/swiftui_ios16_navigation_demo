@@ -24,10 +24,14 @@ struct MainNavigationBar: View {
 
     @ObservedObject private var storage = NavigationStorage.shared
 
+    @ViewBuilder
     private var navigationTitlesView: some View {
         HStack {
-            ForEach(storage.pathItems.sorted(by: <), id: \.key) { index, item in
-                makeTitleButton(item: item, index: index, isLast: index == storage.path.count)
+            ForEach(storage.pathTitles, id: \.self) { title in
+                if let index = storage.pathTitles.firstIndex(of: title) {
+                    let isLast = index == storage.pathTitles.endIndex - 1
+                    makeTitleButton(item: title, index: index, isLast: isLast)
+                }
             }
             Spacer()
         }
@@ -35,11 +39,16 @@ struct MainNavigationBar: View {
     
     @ViewBuilder
     private func makeTitleButton(item: String, index: Int, isLast: Bool) -> some View {
+        let isHome = index == 0
         Button {
             guard !isLast else { return }
-            storage.popTo(index: index)
+            if isHome {
+                storage.popToRoot()
+            } else {
+                storage.popTo(index: index)
+            }
         } label: {
-            if index != 0 {
+            if !isHome {
                 Constants.arrowImage
             }
             Text(item)
