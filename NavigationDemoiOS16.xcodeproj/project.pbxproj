@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		5022A15D28D215E20048AA41 /* NavigationDemoiOS16App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A15C28D215E20048AA41 /* NavigationDemoiOS16App.swift */; };
-		5022A15F28D215E20048AA41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A15E28D215E20048AA41 /* ContentView.swift */; };
-		5022A16128D215E30048AA41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5022A16028D215E30048AA41 /* Assets.xcassets */; };
 		5022A16428D215E30048AA41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5022A16328D215E30048AA41 /* Preview Assets.xcassets */; };
+		5022A17828D21CE20048AA41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16E28D215F80048AA41 /* ContentView.swift */; };
+		5022A17928D21CE50048AA41 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16D28D215F80048AA41 /* FirstView.swift */; };
+		5022A17A28D21CE80048AA41 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16C28D215F80048AA41 /* SecondView.swift */; };
+		5022A17B28D21CEB0048AA41 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A17428D215F80048AA41 /* MainNavigationView.swift */; };
+		5022A17C28D21CEF0048AA41 /* NavigationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A17128D215F80048AA41 /* NavigationStorage.swift */; };
+		5022A17D28D21CEF0048AA41 /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A17328D215F80048AA41 /* MainNavigationBar.swift */; };
+		5022A18328D33CEE0048AA41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5022A18228D33CEE0048AA41 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5022A15928D215E20048AA41 /* NavigationDemoiOS16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationDemoiOS16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5022A15C28D215E20048AA41 /* NavigationDemoiOS16App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDemoiOS16App.swift; sourceTree = "<group>"; };
-		5022A15E28D215E20048AA41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5022A16028D215E30048AA41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5022A16328D215E30048AA41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5022A16C28D215F80048AA41 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		5022A16D28D215F80048AA41 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		5022A16E28D215F80048AA41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5022A17128D215F80048AA41 /* NavigationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStorage.swift; sourceTree = "<group>"; };
+		5022A17328D215F80048AA41 /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
+		5022A17428D215F80048AA41 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
+		5022A18228D33CEE0048AA41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +61,10 @@
 		5022A15B28D215E20048AA41 /* NavigationDemoiOS16 */ = {
 			isa = PBXGroup;
 			children = (
+				5022A18228D33CEE0048AA41 /* Assets.xcassets */,
 				5022A15C28D215E20048AA41 /* NavigationDemoiOS16App.swift */,
-				5022A15E28D215E20048AA41 /* ContentView.swift */,
-				5022A16028D215E30048AA41 /* Assets.xcassets */,
+				5022A16F28D215F80048AA41 /* Navigation */,
+				5022A16B28D215F80048AA41 /* Presentation */,
 				5022A16228D215E30048AA41 /* Preview Content */,
 			);
 			path = NavigationDemoiOS16;
@@ -65,6 +76,26 @@
 				5022A16328D215E30048AA41 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5022A16B28D215F80048AA41 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5022A16C28D215F80048AA41 /* SecondView.swift */,
+				5022A16D28D215F80048AA41 /* FirstView.swift */,
+				5022A16E28D215F80048AA41 /* ContentView.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		5022A16F28D215F80048AA41 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				5022A17128D215F80048AA41 /* NavigationStorage.swift */,
+				5022A17328D215F80048AA41 /* MainNavigationBar.swift */,
+				5022A17428D215F80048AA41 /* MainNavigationView.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5022A16428D215E30048AA41 /* Preview Assets.xcassets in Resources */,
-				5022A16128D215E30048AA41 /* Assets.xcassets in Resources */,
+				5022A18328D33CEE0048AA41 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +168,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5022A15F28D215E20048AA41 /* ContentView.swift in Sources */,
+				5022A17D28D21CEF0048AA41 /* MainNavigationBar.swift in Sources */,
+				5022A17828D21CE20048AA41 /* ContentView.swift in Sources */,
+				5022A17C28D21CEF0048AA41 /* NavigationStorage.swift in Sources */,
+				5022A17928D21CE50048AA41 /* FirstView.swift in Sources */,
+				5022A17A28D21CE80048AA41 /* SecondView.swift in Sources */,
+				5022A17B28D21CEB0048AA41 /* MainNavigationView.swift in Sources */,
 				5022A15D28D215E20048AA41 /* NavigationDemoiOS16App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
