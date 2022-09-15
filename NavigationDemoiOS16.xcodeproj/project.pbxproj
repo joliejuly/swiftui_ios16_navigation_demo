@@ -12,7 +12,6 @@
 		5022A17828D21CE20048AA41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16E28D215F80048AA41 /* ContentView.swift */; };
 		5022A17928D21CE50048AA41 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16D28D215F80048AA41 /* FirstView.swift */; };
 		5022A17A28D21CE80048AA41 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16C28D215F80048AA41 /* SecondView.swift */; };
-		5022A17B28D21CEB0048AA41 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A17428D215F80048AA41 /* MainNavigationView.swift */; };
 		5022A17C28D21CEF0048AA41 /* NavigationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A17128D215F80048AA41 /* NavigationStorage.swift */; };
 		5022A17D28D21CEF0048AA41 /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A17328D215F80048AA41 /* MainNavigationBar.swift */; };
 		5022A18328D33CEE0048AA41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5022A18228D33CEE0048AA41 /* Assets.xcassets */; };
@@ -27,7 +26,6 @@
 		5022A16E28D215F80048AA41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5022A17128D215F80048AA41 /* NavigationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStorage.swift; sourceTree = "<group>"; };
 		5022A17328D215F80048AA41 /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
-		5022A17428D215F80048AA41 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 		5022A18228D33CEE0048AA41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,7 +91,6 @@
 			children = (
 				5022A17128D215F80048AA41 /* NavigationStorage.swift */,
 				5022A17328D215F80048AA41 /* MainNavigationBar.swift */,
-				5022A17428D215F80048AA41 /* MainNavigationView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -173,7 +170,6 @@
 				5022A17C28D21CEF0048AA41 /* NavigationStorage.swift in Sources */,
 				5022A17928D21CE50048AA41 /* FirstView.swift in Sources */,
 				5022A17A28D21CE80048AA41 /* SecondView.swift in Sources */,
-				5022A17B28D21CEB0048AA41 /* MainNavigationView.swift in Sources */,
 				5022A15D28D215E20048AA41 /* NavigationDemoiOS16App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

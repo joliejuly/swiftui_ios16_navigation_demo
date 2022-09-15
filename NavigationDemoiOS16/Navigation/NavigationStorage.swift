@@ -10,8 +10,8 @@ import SwiftUI
 /// Хранилище стека навигации
 final class NavigationStorage: ObservableObject {
     
-    enum Destination {
-        case first
+    enum Destination: Int {
+        case first = 1
         case second
     }
     
@@ -19,18 +19,26 @@ final class NavigationStorage: ObservableObject {
     
     /// Хранилище стека навигации в iOS16
     @Published var path = NavigationPath()
+    @Published var pathItems: [Int: String] = [:]
     
-    
-    func showFirst() {
-        path.append(Destination.first)
+    func show(index: Int, title: String) {
+        pathItems[0] = "Home"
+        pathItems[index] = title
+        if let destination = Destination(rawValue: index) {
+            path.append(destination)
+        }
     }
     
-    func showSecond() {
-        path.append(Destination.second)
-    }
-    
-    func popTo(id: Destination) {
-        // TODO: index
-        path.removeLast()
+    func popTo(index: Int) {
+        guard !path.isEmpty, index <= path.count else { return }
+        // удаляем вью из стека
+        // примечание: для popToRoot анимация перехода не работает
+        path.removeLast(path.count - index)
+        // удаляем названия вью из таббара
+        for (key, _) in pathItems {
+            if key > path.count {
+                pathItems[key] = nil
+            }
+        }
     }
 }

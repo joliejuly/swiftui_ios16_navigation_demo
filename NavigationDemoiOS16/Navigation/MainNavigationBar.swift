@@ -26,33 +26,29 @@ struct MainNavigationBar: View {
 
     private var navigationTitlesView: some View {
         HStack {
-//            if let items = storage.path {
-//                ForEach(Array(items.enumerated()), id: \.1.id) { index, item in
-//                    makeTitleButton(item: item, index: index, isLast: index == items.endIndex - 1)
-//                }
-//            }
+            ForEach(storage.pathItems.sorted(by: <), id: \.key) { index, item in
+                makeTitleButton(item: item, index: index, isLast: index == storage.path.count)
+            }
             Spacer()
         }
     }
     
-//    @ViewBuilder
-//    private func makeTitleButton(item: NavigationPathItem, index: Int, isLast: Bool) -> some View {
-//        Button {
-//            guard !isLast else { return }
-//            storage.popTo(id: item.id)
-//        } label: {
-//            if index != 0 {
-//                Constants.arrowImage
-//            }
-//            if let title = item.title {
-//                Text(title)
-//                    .font(.system(size: 20, weight: isLast ? .heavy : .medium, design: .rounded))
-//                    .lineLimit(1)
-//            }
-//        }
-//        .frame(height: 30)
-//        .foregroundColor(.white)
-//    }
+    @ViewBuilder
+    private func makeTitleButton(item: String, index: Int, isLast: Bool) -> some View {
+        Button {
+            guard !isLast else { return }
+            storage.popTo(index: index)
+        } label: {
+            if index != 0 {
+                Constants.arrowImage
+            }
+            Text(item)
+                .font(.system(size: 20, weight: isLast ? .heavy : .medium, design: .rounded))
+                .lineLimit(1)
+        }
+        .frame(height: 30)
+        .foregroundColor(.white)
+    }
 }
 
 

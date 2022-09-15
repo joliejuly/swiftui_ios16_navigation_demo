@@ -16,7 +16,7 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.showFirst()
+                    storage.show(index: 1, title: "First")
                 } label: {
                     Text("Go!")
                         .font(.system(size: 50, weight: .heavy, design: .rounded))
@@ -24,11 +24,13 @@ struct ContentView: View {
                 }
             }
             .navigationDestination(for: NavigationStorage.Destination.self) { destination in
-                FirstView()
+                switch destination {
+                case .first:
+                    FirstView()
+                case .second:
+                    SecondView()
+                }
             }
-//            .navigationDestination(isPresented: $showDetails) {
-//            ///             ColorDetail(color: favoriteColor)
-//            ///         }
         }
     }
     
