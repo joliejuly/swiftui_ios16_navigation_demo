@@ -10,39 +10,30 @@ private extension View {
 
 /// Модификатор навигации
 struct NavigationModifier<Destination: View>: ViewModifier {
-    let destination: Destination?
+    let destination: () -> Destination
     let isPresented: Binding<Bool>
 
-    init(id: String? = nil, title: String, destination: Destination?, isPresented: Binding<Bool>) {
+    init(id: String, title: String, destination: @escaping () -> Destination, isPresented: Binding<Bool>) {
         self.destination = destination
         self.isPresented = isPresented
 
-        guard let destination = destination, isPresented.wrappedValue == true else { return }
-        let identifier = id ?? destination.navigationID
+        guard isPresented.wrappedValue == true else { return }
 
-        NavigationStorage.shared.addItem(isPresented: isPresented, id: identifier, title: title)
+        NavigationStorage.shared.addItem(isPresented: isPresented, id: id, title: title)
     }
 
     func body(content: Content) -> some View {
         content
-            .background(
-                NavigationLink(
-                    destination: destination,
-                    isPresented: isPresented
-                ) {
-                    EmptyView()
-                }
-                .hidden()
-            )
+            .navigationDestination(isPresented: isPresented, destination: destination)
     }
 }
 
 extension View {
     func navigationLink<Destination: View>(
-        id: String? = nil,
+        id: String,
         title: String,
-        destination: Destination?,
-        isPresented: Binding<Bool>
+        isPresented: Binding<Bool>,
+        destination: @escaping () -> Destination
     ) -> some View {
         modifier(NavigationModifier(id: id, title: title, destination: destination, isPresented: isPresented))
     }

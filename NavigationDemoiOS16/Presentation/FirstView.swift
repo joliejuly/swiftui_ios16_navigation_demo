@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FirstView: View {
     
+    @Binding var isSecondViewShown: Bool
+    
     var body: some View {
         ZStack {
             Color.black
@@ -19,7 +21,7 @@ struct FirstView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    NavigationStorage.shared.show(id: SecondView.id, title: "SecondView")
+                    isSecondViewShown = true
                 } label: {
                     Text("Tap me!")
                         .font(.system(size: 30, weight: .heavy, design: .rounded))
@@ -31,11 +33,6 @@ struct FirstView: View {
         }
         .ignoresSafeArea(.container, edges: .vertical)
         .navigationBarHidden(true)
-    }
-}
-
-struct FirstView_Previews: PreviewProvider {
-    static var previews: some View {
-        FirstView()
+        
     }
 }

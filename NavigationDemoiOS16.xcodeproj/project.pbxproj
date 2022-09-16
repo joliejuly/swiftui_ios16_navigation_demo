@@ -12,11 +12,11 @@
 		5022A17828D21CE20048AA41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16E28D215F80048AA41 /* ContentView.swift */; };
 		5022A17928D21CE50048AA41 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16D28D215F80048AA41 /* FirstView.swift */; };
 		5022A17A28D21CE80048AA41 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A16C28D215F80048AA41 /* SecondView.swift */; };
-		5022A17D28D21CEF0048AA41 /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022A17328D215F80048AA41 /* MainNavigationBar.swift */; };
 		5022A18328D33CEE0048AA41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5022A18228D33CEE0048AA41 /* Assets.xcassets */; };
 		5075C78628D4B9F4000B473D /* NavigationPathItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075C78528D4B9F4000B473D /* NavigationPathItem.swift */; };
 		5075C78828D4B9F7000B473D /* View+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075C78728D4B9F7000B473D /* View+Navigation.swift */; };
 		5075C78A28D4BA1C000B473D /* NavigationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075C78928D4BA1C000B473D /* NavigationStorage.swift */; };
+		5075C78C28D4BF0D000B473D /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075C78B28D4BF0D000B473D /* MainNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,11 +26,11 @@
 		5022A16C28D215F80048AA41 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		5022A16D28D215F80048AA41 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		5022A16E28D215F80048AA41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5022A17328D215F80048AA41 /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
 		5022A18228D33CEE0048AA41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5075C78528D4B9F4000B473D /* NavigationPathItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationPathItem.swift; path = ../../../NavigationDemo/NavigationDemo/Navigation/NavigationPathItem.swift; sourceTree = "<group>"; };
 		5075C78728D4B9F7000B473D /* View+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Navigation.swift"; sourceTree = "<group>"; };
 		5075C78928D4BA1C000B473D /* NavigationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationStorage.swift; path = ../../../NavigationDemo/NavigationDemo/Navigation/NavigationStorage.swift; sourceTree = "<group>"; };
+		5075C78B28D4BF0D000B473D /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainNavigationBar.swift; path = ../../../NavigationDemo/NavigationDemo/Navigation/MainNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +93,10 @@
 		5022A16F28D215F80048AA41 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				5075C78B28D4BF0D000B473D /* MainNavigationBar.swift */,
 				5075C78728D4B9F7000B473D /* View+Navigation.swift */,
 				5075C78528D4B9F4000B473D /* NavigationPathItem.swift */,
 				5075C78928D4BA1C000B473D /* NavigationStorage.swift */,
-				5022A17328D215F80048AA41 /* MainNavigationBar.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -172,10 +172,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5075C78628D4B9F4000B473D /* NavigationPathItem.swift in Sources */,
-				5022A17D28D21CEF0048AA41 /* MainNavigationBar.swift in Sources */,
 				5022A17828D21CE20048AA41 /* ContentView.swift in Sources */,
 				5075C78A28D4BA1C000B473D /* NavigationStorage.swift in Sources */,
 				5022A17928D21CE50048AA41 /* FirstView.swift in Sources */,
+				5075C78C28D4BF0D000B473D /* MainNavigationBar.swift in Sources */,
 				5022A17A28D21CE80048AA41 /* SecondView.swift in Sources */,
 				5075C78828D4B9F7000B473D /* View+Navigation.swift in Sources */,
 				5022A15D28D215E20048AA41 /* NavigationDemoiOS16App.swift in Sources */,

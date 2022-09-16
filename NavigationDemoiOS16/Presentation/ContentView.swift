@@ -9,35 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack(path: $storage.path) {
+        NavigationStack {
             ZStack {
                 Image("home")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.show(id: FirstView.id, title: "FirstView")
+                    isFirstViewShown = true
                 } label: {
                     Text("Go!")
                         .font(.system(size: 50, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                 }
             }
-            .navigationDestination(for: String.self) { destination in
-                switch destination {
-                case FirstView.id:
-                    FirstView()
-                case SecondView.id:
-                    SecondView()
-                default:
-                    ContentView()
-                }
+            .onAppear {
+                storage.addMainScreenPathItem()
+            }
+            .navigationLink(id: FirstView.id, title: FirstView.id, isPresented: $isFirstViewShown) {
+                FirstView(isSecondViewShown: $isSecondViewShown)
+            }
+            .navigationLink(id: SecondView.id, title: SecondView.id, isPresented: $isSecondViewShown) {
+                SecondView()
             }
         }
     }
     
     @ObservedObject private var storage = NavigationStorage.shared
     @State private var isFirstViewShown = false
+    @State var isSecondViewShown = false
 }
 
 struct ContentView_Previews: PreviewProvider {
