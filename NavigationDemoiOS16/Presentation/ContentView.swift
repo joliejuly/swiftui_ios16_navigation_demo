@@ -16,22 +16,18 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.show(id: FirstView.id, title: "FirstView")
+                    storage.show(id: FirstView.id)
                 } label: {
                     Text("Go!")
                         .font(.system(size: 50, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                 }
             }
-            .navigationDestination(for: String.self) { destination in
-                switch destination {
-                case FirstView.id:
-                    FirstView()
-                case SecondView.id:
-                    SecondView()
-                default:
-                    ContentView()
-                }
+            .navigationLink(id: FirstView.id, title: FirstView.id) {
+                AnyView(FirstView())
+            }
+            .navigationDestination(for: NavigationPathItem.self) { item in
+                item.destination()
             }
         }
     }

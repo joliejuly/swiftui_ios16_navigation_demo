@@ -27,10 +27,10 @@ struct MainNavigationBar: View {
     @ViewBuilder
     private var navigationTitlesView: some View {
         HStack {
-            ForEach(storage.pathTitles, id: \.self) { title in
-                if let index = storage.pathTitles.firstIndex(of: title) {
-                    let isLast = index == storage.pathTitles.endIndex - 1
-                    makeTitleButton(item: title, index: index, isLast: isLast)
+            ForEach(storage.pathItems) { item in
+                if let index = storage.pathItems.firstIndex(of: item), item.isShown {
+                    let isLast = index == storage.pathItems.endIndex - 1
+                    makeTitleButton(item: item.title ?? "", index: index, isLast: isLast)
                 }
             }
             Spacer()

@@ -19,27 +19,38 @@ final class NavigationStorage: ObservableObject {
     static let shared = NavigationStorage()
     
     /// Хранение стека навигации
-    @Published var path = NavigationPath()
-    
+    @Published var path = [NavigationPathItem]()
     /// Хранение названий вью для навбара
-    @Published var pathTitles: [String] = []
+    @Published var pathItems: [NavigationPathItem] = []
     
-    func show(id: String, title: String) {
-        if path.isEmpty {
-            pathTitles.append("Home")
+    func addItem(_ item: NavigationPathItem) {
+        guard !pathItems.contains(where: { $0.id == item.id }) else { return }
+        DispatchQueue.main.async {
+            self.addHomeItem()
+            self.pathItems.append(item)
         }
-        pathTitles.append(title)
-        path.append(id)
+        
+    }
+    
+    func addHomeItem() {
+        guard !pathItems.contains(where: { $0.id == NavigationPathItem.home.id }) else { return }
+        pathItems.insert(NavigationPathItem.home, at: 0)
+    }
+    
+    func show(id: String) {
+        guard let item = pathItems.first(where: { $0.id == id } ) else { return }
+        item.isShown = true
+        path.append(item)
     }
     
     func popToRoot() {
         path.removeLast(path.count)
-        pathTitles = []
+        pathItems = []
     }
     
     func popTo(index: Int) {
         guard !path.isEmpty, index <= path.count else { return }
         path.removeLast(path.count - index)
-        pathTitles = Array(pathTitles[0 ... path.count])
+        pathItems = Array(pathItems[0 ... path.count])
     }
 }
