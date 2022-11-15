@@ -37,8 +37,9 @@ final class NavigationStorage: ObservableObject {
         pathItems.insert(NavigationPathItem.home, at: 0)
     }
     
-    func show(id: String) {
-        guard let item = pathItems.first(where: { $0.id == id } ) else { return }
+    func show(id: String, title: String, destination: @escaping () -> AnyView) {
+        let item = NavigationPathItem(id: id, title: title, destination: destination)
+        NavigationStorage.shared.addItem(item)
         item.isShown = true
         path.append(item)
     }
@@ -49,7 +50,7 @@ final class NavigationStorage: ObservableObject {
     }
     
     func popTo(index: Int) {
-        guard !path.isEmpty, index <= path.count else { return }
+        guard !path.isEmpty, index < path.count else { return }
         path.removeLast(path.count - index)
         pathItems = Array(pathItems[0 ... path.count])
     }

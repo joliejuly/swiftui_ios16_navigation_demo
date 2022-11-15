@@ -16,15 +16,14 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.show(id: FirstView.id)
+                    storage.show(id: FirstView.id, title: FirstView.id) {
+                        AnyView(FirstView())
+                    }
                 } label: {
                     Text("Go!")
                         .font(.system(size: 50, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                 }
-            }
-            .navigationLink(id: FirstView.id, title: FirstView.id) {
-                AnyView(FirstView())
             }
             .navigationDestination(for: NavigationPathItem.self) { item in
                 item.destination()

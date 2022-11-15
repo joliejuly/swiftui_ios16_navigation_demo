@@ -19,7 +19,9 @@ struct FirstView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    NavigationStorage.shared.show(id: SecondView.id)
+                    NavigationStorage.shared.show(id: SecondView.id, title: SecondView.id) {
+                        AnyView(SecondView())
+                    }
                 } label: {
                     Text("Tap me!")
                         .font(.system(size: 30, weight: .heavy, design: .rounded))
@@ -31,9 +33,6 @@ struct FirstView: View {
         }
         .ignoresSafeArea(.container, edges: .vertical)
         .navigationBarHidden(true)
-        .navigationLink(id: SecondView.id, title: SecondView.id) {
-            AnyView(SecondView())
-        }
     }
 }
 
