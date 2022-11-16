@@ -19,12 +19,12 @@ struct FirstView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    NavigationStorage.shared.show(id: SecondView.id, title: SecondView.id) {
+                    storage.show(id: SecondView.id, title: "Second") {
                         AnyView(SecondView())
                     }
                 } label: {
-                    Text("Tap me!")
-                        .font(.system(size: 30, weight: .heavy, design: .rounded))
+                    Text("1")
+                        .font(.system(size: 60, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                 }
                 Spacer()
@@ -34,6 +34,8 @@ struct FirstView: View {
         .ignoresSafeArea(.container, edges: .vertical)
         .navigationBarHidden(true)
     }
+    
+    private let storage = NavigationStorage.shared
 }
 
 struct FirstView_Previews: PreviewProvider {

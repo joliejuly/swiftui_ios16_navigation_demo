@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 extension View {
     static var id: String {
@@ -29,11 +30,23 @@ final class NavigationStorage: ObservableObject {
     }
     
     func popToRoot() {
+        enableAnimations()
         path.removeLast(path.count)
     }
     
     func popTo(index: Int) {
         guard !path.isEmpty, index < path.count else { return }
+        enableAnimations()
         path.removeLast(path.count - index)
+    }
+    
+    private func enableAnimations() {
+        let animation = CATransition()
+        animation.isRemovedOnCompletion = true
+        animation.type = .push
+        animation.subtype = .fromLeft
+        animation.duration = 0.3
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
     }
 }

@@ -11,12 +11,13 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $storage.path) {
             ZStack {
+                Color.black
                 Image("home")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.show(id: FirstView.id, title: FirstView.id) {
+                    storage.show(id: FirstView.id, title: "First") {
                         AnyView(FirstView())
                     }
                 } label: {
@@ -25,6 +26,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
             }
+            .ignoresSafeArea()
             .navigationDestination(for: NavigationPathItem.self) { item in
                 item.destination()
             }

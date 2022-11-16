@@ -17,9 +17,15 @@ struct SecondView: View {
             VStack {
                 MainNavigationBar()
                 Spacer()
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                    .font(.system(size: 30, weight: .heavy, design: .rounded))
-                    .foregroundColor(.white)
+                Button {
+                    storage.show(id: ThirdView.id, title: "Third") {
+                        AnyView(ThirdView())
+                    }
+                } label: {
+                    Text("2")
+                        .font(.system(size: 60, weight: .heavy, design: .rounded))
+                        .foregroundColor(.white)
+                }
                 Spacer()
             }
             .padding()
@@ -27,6 +33,8 @@ struct SecondView: View {
         .navigationBarHidden(true)
         .ignoresSafeArea(.container, edges: .vertical)
     }
+    
+    private let storage = NavigationStorage.shared
 }
 
 struct SecondView_Previews: PreviewProvider {
