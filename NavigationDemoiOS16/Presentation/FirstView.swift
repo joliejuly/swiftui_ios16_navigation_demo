@@ -19,7 +19,7 @@ struct FirstView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    storage.show(id: SecondView.id, title: "Second") {
+                    storage.show(id: SecondView.navigationID, title: "Second") {
                         AnyView(SecondView())
                     }
                 } label: {

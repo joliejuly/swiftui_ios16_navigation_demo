@@ -17,7 +17,7 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.show(id: FirstView.id, title: "First") {
+                    storage.show(id: FirstView.navigationID, title: "First") {
                         AnyView(FirstView())
                     }
                 } label: {

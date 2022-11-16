@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 extension View {
-    static var id: String {
+    static var navigationID: String {
         String(describing: self)
     }
 }

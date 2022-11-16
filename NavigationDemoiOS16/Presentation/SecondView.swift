@@ -18,7 +18,7 @@ struct SecondView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    storage.show(id: ThirdView.id, title: "Third") {
+                    storage.show(id: ThirdView.navigationID, title: "Third") {
                         AnyView(ThirdView())
                     }
                 } label: {

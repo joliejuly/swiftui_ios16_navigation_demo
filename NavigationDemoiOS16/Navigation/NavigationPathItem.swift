@@ -9,11 +9,7 @@ import SwiftUI
 
 /// Информация об экранах навигации
 final class NavigationPathItem: Identifiable, Hashable {
-    
-    static let home = NavigationPathItem(id: ContentView.id, title: "Home", isShown: true) {
-        AnyView(EmptyView())
-    }
-    
+
     /// Идентификатор
     let id: String
     /// Название экрана
