@@ -6,13 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
-
-extension View {
-    static var navigationID: String {
-        String(describing: self)
-    }
-}
 
 /// Хранилище стека
 final class NavigationStorage: ObservableObject {
@@ -30,23 +23,13 @@ final class NavigationStorage: ObservableObject {
     }
     
     func popToRoot() {
-        enableAnimations()
+        UIApplication.enableKeyWindowAnimation()
         path.removeLast(path.count)
     }
     
     func popTo(index: Int) {
         guard !path.isEmpty, index < path.count else { return }
-        enableAnimations()
+        UIApplication.enableKeyWindowAnimation()
         path.removeLast(path.count - index)
-    }
-    
-    private func enableAnimations() {
-        let animation = CATransition()
-        animation.isRemovedOnCompletion = true
-        animation.type = .push
-        animation.subtype = .fromLeft
-        animation.duration = 0.3
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
     }
 }
