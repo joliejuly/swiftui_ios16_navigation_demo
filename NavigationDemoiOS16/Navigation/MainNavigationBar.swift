@@ -27,9 +27,12 @@ struct MainNavigationBar: View {
     @ViewBuilder
     private var navigationTitlesView: some View {
         HStack {
-            ForEach(storage.pathItems) { item in
-                if let index = storage.pathItems.firstIndex(of: item), item.isShown {
-                    let isLast = index == storage.pathItems.endIndex - 1
+            if !storage.path.isEmpty {
+                makeTitleButton(item: "Home", index: -1, isLast: false)
+            }
+            ForEach(storage.path) { item in
+                if let index = storage.path.firstIndex(of: item), item.isShown {
+                    let isLast = index == storage.path.endIndex - 1
                     makeTitleButton(item: item.title ?? "", index: index, isLast: isLast)
                 }
             }
@@ -39,13 +42,13 @@ struct MainNavigationBar: View {
     
     @ViewBuilder
     private func makeTitleButton(item: String, index: Int, isLast: Bool) -> some View {
-        let isHome = index == 0
+        let isHome = index == -1
         Button {
             guard !isLast else { return }
             if isHome {
                 storage.popToRoot()
             } else {
-                storage.popTo(index: index)
+                storage.popTo(index: index + 1)
             }
         } label: {
             if !isHome {
