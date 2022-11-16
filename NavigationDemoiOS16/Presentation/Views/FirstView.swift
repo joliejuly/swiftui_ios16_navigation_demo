@@ -27,6 +27,7 @@ struct FirstView: View {
                         .font(.system(size: 60, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                 }
+                stepper
                 Spacer()
             }
             .padding()
@@ -36,6 +37,22 @@ struct FirstView: View {
     }
     
     private let storage = NavigationStorage.shared
+    
+    @State private var stepperValue: Float = 0
+    
+    private var stepper: some View {
+        Stepper(value: $stepperValue, in: 1...30) {
+            Text(String(stepperValue))
+                .font(.title)
+        }
+        .padding()
+        .background(
+            Color.white
+                .mask {
+                    RoundedRectangle(cornerRadius: 8)
+                }
+        )
+    }
 }
 
 struct FirstView_Previews: PreviewProvider {
