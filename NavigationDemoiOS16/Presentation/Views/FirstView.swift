@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FirstView: View {
     
+    let title: String
+    
     var body: some View {
         ZStack {
             Color.black
@@ -57,6 +59,6 @@ struct FirstView: View {
 
 struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstView()
+        FirstView(title: "")
     }
 }

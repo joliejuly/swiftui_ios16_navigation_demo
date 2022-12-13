@@ -17,8 +17,8 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.7)
                 Button {
-                    storage.show(id: FirstView.navigationID, title: "First") {
-                        FirstView()
+                    storage.show(id: FirstView.navigationID, title: "First", model: "Title") { title in
+                        FirstView(title: title)
                     }
                 } label: {
                     Text("Go!")
@@ -28,7 +28,7 @@ struct ContentView: View {
             }
             .ignoresSafeArea()
             .navigationDestination(for: NavigationPathItem.self) { item in
-                item.destination()
+                item.destination(item.model)
             }
         }
     }

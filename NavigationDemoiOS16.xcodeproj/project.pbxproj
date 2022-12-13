@@ -18,6 +18,7 @@
 		5075C78E28D88881000B473D /* NavigationPathItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5075C78D28D88881000B473D /* NavigationPathItem.swift */; };
 		F769BBDB2924D9980076FF4B /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F769BBDA2924D9980076FF4B /* ThirdView.swift */; };
 		F769BBDD2924E1AC0076FF4B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F769BBDC2924E1AC0076FF4B /* Extensions.swift */; };
+		F7CBDA602948CB0600C481BE /* View+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBDA5F2948CB0600C481BE /* View+Navigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		5075C78D28D88881000B473D /* NavigationPathItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathItem.swift; sourceTree = "<group>"; };
 		F769BBDA2924D9980076FF4B /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		F769BBDC2924E1AC0076FF4B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F7CBDA5F2948CB0600C481BE /* View+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Navigation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				5022A17128D215F80048AA41 /* NavigationStorage.swift */,
 				5075C78D28D88881000B473D /* NavigationPathItem.swift */,
+				F7CBDA5F2948CB0600C481BE /* View+Navigation.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				F769BBDB2924D9980076FF4B /* ThirdView.swift in Sources */,
 				5022A17828D21CE20048AA41 /* ContentView.swift in Sources */,
 				5022A17C28D21CEF0048AA41 /* NavigationStorage.swift in Sources */,
+				F7CBDA602948CB0600C481BE /* View+Navigation.swift in Sources */,
 				5022A17928D21CE50048AA41 /* FirstView.swift in Sources */,
 				5022A17A28D21CE80048AA41 /* SecondView.swift in Sources */,
 				5022A15D28D215E20048AA41 /* NavigationDemoiOS16App.swift in Sources */,

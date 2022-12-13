@@ -15,10 +15,21 @@ final class NavigationStorage: ObservableObject {
     /// Хранение стека навигации
     @Published var path = [NavigationPathItem]()
     
-    
     func show(id: String, title: String, destination: @escaping () -> some View) {
-        let item = NavigationPathItem(id: id, title: title) {
+        let item = NavigationPathItem(id: id, title: title, model: nil) { _ in
             AnyView(destination())
+        }
+        item.isShown = true
+        path.append(item)
+    }
+    
+    func show<Model: Any>(id: String, title: String, model: Model, destination: @escaping (Model) -> some View) {
+        let item = NavigationPathItem(id: id, title: title, model: model) { model in
+            if let model = model as? Model {
+                return AnyView(destination(model))
+            } else {
+                return AnyView(EmptyView())
+            }
         }
         item.isShown = true
         path.append(item)
