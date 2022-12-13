@@ -70,7 +70,11 @@ public extension View {
         destination: Destination,
         isActive: Binding<Bool>
     ) -> some View {
-        modifier(NavigationModifier(destination: destination, isActive: isActive))
+        if #available(iOS 16, *) {
+            return self
+        } else {
+            return modifier(NavigationModifier(destination: destination, isActive: isActive))
+        }
     }
 
     func navigation<Destination: View, Model: Any>(
@@ -78,6 +82,10 @@ public extension View {
         isActive: Binding<Bool>,
         destinationHandler: @escaping (Model) -> (Destination)
     ) -> some View {
-        modifier(NavigationModelModifier(model: model, isActive: isActive, destinationHandler: destinationHandler))
+        if #available(iOS 16, *) {
+            return self
+        } else {
+            return modifier(NavigationModelModifier(model: model, isActive: isActive, destinationHandler: destinationHandler))
+        }
     }
 }
