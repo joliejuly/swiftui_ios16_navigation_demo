@@ -20,7 +20,7 @@ struct FirstView: View {
                 Spacer()
                 Button {
                     storage.show(id: SecondView.navigationID, title: "Second") {
-                        AnyView(SecondView())
+                        SecondView()
                     }
                 } label: {
                     Text("1")

@@ -16,8 +16,10 @@ final class NavigationStorage: ObservableObject {
     @Published var path = [NavigationPathItem]()
     
     
-    func show(id: String, title: String, destination: @escaping () -> AnyView) {
-        let item = NavigationPathItem(id: id, title: title, destination: destination)
+    func show(id: String, title: String, destination: @escaping () -> some View) {
+        let item = NavigationPathItem(id: id, title: title) {
+            AnyView(destination())
+        }
         item.isShown = true
         path.append(item)
     }

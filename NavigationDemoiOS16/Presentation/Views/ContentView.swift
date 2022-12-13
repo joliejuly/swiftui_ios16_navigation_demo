@@ -18,7 +18,7 @@ struct ContentView: View {
                     .opacity(0.7)
                 Button {
                     storage.show(id: FirstView.navigationID, title: "First") {
-                        AnyView(FirstView())
+                        FirstView()
                     }
                 } label: {
                     Text("Go!")
@@ -33,8 +33,7 @@ struct ContentView: View {
         }
     }
     
-    @ObservedObject private var storage = NavigationStorage.shared
-    @State private var isFirstViewShown = false
+    @StateObject private var storage = NavigationStorage.shared
 }
 
 struct ContentView_Previews: PreviewProvider {
