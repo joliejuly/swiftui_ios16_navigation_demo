@@ -19,12 +19,15 @@ final class NavigationPathItem: Identifiable, Hashable {
     
     var model: Any?
     
+    @Binding var isActive: Bool
+    
     var destination: (Any?) -> AnyView
 
-    init(id: String, title: String, isShown: Bool = false, model: Any? = nil, destination: @escaping (Any?) -> AnyView) {
+    init(id: String, title: String, isActive: Binding<Bool>, isShown: Bool = false, model: Any? = nil, destination: @escaping (Any?) -> AnyView) {
         self.id = id
         self.title = title
         self.isShown = isShown
+        self._isActive = isActive
         self.model = model
         self.destination = destination
     }

@@ -10,20 +10,34 @@ import SwiftUI
 struct NavigationModifier<Destination>: ViewModifier where Destination: View {
     let destination: Destination
     let isActive: Binding<Bool>
+    let navigationPathItem: NavigationPathItem?
 
-    init(destination: Destination, isActive: Binding<Bool>) {
+    init(destination: Destination, isActive: Binding<Bool>, navigationPathItem: NavigationPathItem? = nil) {
         self.destination = destination
         self.isActive = isActive
+        self.navigationPathItem = navigationPathItem
+        
+        if #available(iOS 16.0, *), let item = navigationPathItem, isActive.wrappedValue {
+            DispatchQueue.main.async {
+                NavigationStorage.shared.add(navigationPathItem: item)
+            }
+        }
+        
     }
 
     func body(content: Content) -> some View {
-        content
-            .background(
-                NavigationLink(destination: destination, isActive: isActive) {
-                    EmptyView()
-                }
-                .hidden()
-            )
+        if #available(iOS 16.0, *) {
+            content
+        } else {
+            content
+                .background(
+                    NavigationLink(destination: destination, isActive: isActive) {
+                        EmptyView()
+                    }
+                        .hidden()
+                )
+        }
+        
     }
 }
 
@@ -68,10 +82,14 @@ struct NavigationModelModifier<Destination: View, Model: Any>: ViewModifier {
 public extension View {
     func navigation<Destination: View>(
         destination: Destination,
-        isActive: Binding<Bool>
+        isActive: Binding<Bool>,
+        id: String = Destination.navigationID
     ) -> some View {
         if #available(iOS 16, *) {
-            return self
+            let navigationPathItem = NavigationPathItem(id: id, title: id, isActive: isActive) { _ in
+                AnyView(destination)
+            }
+            return modifier(NavigationModifier(destination: destination, isActive: isActive, navigationPathItem: navigationPathItem))
         } else {
             return modifier(NavigationModifier(destination: destination, isActive: isActive))
         }

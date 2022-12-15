@@ -21,9 +21,7 @@ struct FirstView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    storage.show(id: SecondView.navigationID, title: "Second") {
-                        SecondView()
-                    }
+                    isSecondViewShown = true
                 } label: {
                     Text("1")
                         .font(.system(size: 60, weight: .heavy, design: .rounded))
@@ -34,13 +32,13 @@ struct FirstView: View {
             }
             .padding()
         }
+        .navigation(destination: SecondView(), isActive: $isSecondViewShown)
         .ignoresSafeArea(.container, edges: .vertical)
         .navigationBarHidden(true)
     }
     
-    private let storage = NavigationStorage.shared
-    
     @State private var stepperValue: Float = 0
+    @State private var isSecondViewShown = false
     
     private var stepper: some View {
         Stepper(value: $stepperValue, in: 1...30) {

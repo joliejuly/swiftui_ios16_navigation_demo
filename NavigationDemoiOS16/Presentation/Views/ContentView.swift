@@ -12,6 +12,7 @@ struct ContentView: View {
             if #available(iOS 16.0, *) {
                 NavigationStack(path: $storage.path) {
                     content
+                        .navigation(destination: FirstView(title: "Title"), isActive: $isFirstViewShown)
                         .navigationDestination(for: NavigationPathItem.self) { item in
                             item.destination(item.model)
                         }
@@ -33,9 +34,6 @@ struct ContentView: View {
                 .opacity(0.7)
             Button {
                 isFirstViewShown = true
-                storage.show(id: FirstView.navigationID, title: "First", model: "Title") { title in
-                    FirstView(title: title)
-                }
             } label: {
                 Text("Go!")
                     .font(.system(size: 50, weight: .heavy, design: .rounded))

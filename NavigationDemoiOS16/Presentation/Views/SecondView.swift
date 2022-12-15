@@ -18,9 +18,7 @@ struct SecondView: View {
                 MainNavigationBar()
                 Spacer()
                 Button {
-                    storage.show(id: ThirdView.navigationID, title: "Third") { 
-                        ThirdView()
-                    }
+                    isThirdViewShown = true
                 } label: {
                     Text("2")
                         .font(.system(size: 60, weight: .heavy, design: .rounded))
@@ -30,11 +28,12 @@ struct SecondView: View {
             }
             .padding()
         }
+        .navigation(destination: ThirdView(), isActive: $isThirdViewShown)
         .navigationBarHidden(true)
         .ignoresSafeArea(.container, edges: .vertical)
     }
     
-    private let storage = NavigationStorage.shared
+    @State private var isThirdViewShown = false
 }
 
 struct SecondView_Previews: PreviewProvider {

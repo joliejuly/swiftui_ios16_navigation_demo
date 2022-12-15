@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
     static var navigationID: String {
         String(describing: self)
     }
