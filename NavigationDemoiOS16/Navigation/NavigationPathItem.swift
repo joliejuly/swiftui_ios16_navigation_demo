@@ -14,21 +14,15 @@ final class NavigationPathItem: Identifiable, Hashable {
     let id: String
     /// Название экрана
     let title: String?
-    
-    var isShown: Bool
-    
-    var model: Any?
-    
+    /// Открыт ли экран
     @Binding var isActive: Bool
-    
-    var destination: (Any?) -> AnyView
+    /// Создание экрана для перехода
+    var destination: () -> AnyView
 
-    init(id: String, title: String, isActive: Binding<Bool>, isShown: Bool = false, model: Any? = nil, destination: @escaping (Any?) -> AnyView) {
+    init(id: String, title: String, isActive: Binding<Bool>, isShown: Bool = false, destination: @escaping () -> AnyView) {
         self.id = id
         self.title = title
-        self.isShown = isShown
         self._isActive = isActive
-        self.model = model
         self.destination = destination
     }
     

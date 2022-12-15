@@ -17,7 +17,6 @@ final class NavigationStorage: ObservableObject {
     
     func add(navigationPathItem: NavigationPathItem) {
         guard !path.contains(navigationPathItem) else { return }
-        navigationPathItem.isShown = true
         path.append(navigationPathItem)
     }
 

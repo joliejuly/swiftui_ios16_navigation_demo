@@ -31,7 +31,7 @@ struct MainNavigationBar: View {
                 makeTitleButton(item: "Home", index: -1, isLast: false)
             }
             ForEach(storage.path) { item in
-                if let index = storage.path.firstIndex(of: item), item.isShown {
+                if let index = storage.path.firstIndex(of: item), item.isActive {
                     let isLast = index == storage.path.endIndex - 1
                     makeTitleButton(item: item.title ?? "", index: index, isLast: isLast)
                 }

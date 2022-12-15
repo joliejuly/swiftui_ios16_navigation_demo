@@ -6,23 +6,13 @@ import SwiftUI
 // swiftlint:disable custom_navigation_link
 
 /// Модификатор навигации
-@available(iOS, introduced: 14.0, deprecated: 16.0, message: "Используй новые методы навигации для iOS16 и выше")
 struct NavigationModifier<Destination>: ViewModifier where Destination: View {
     let destination: Destination
     let isActive: Binding<Bool>
-    let navigationPathItem: NavigationPathItem?
 
-    init(destination: Destination, isActive: Binding<Bool>, navigationPathItem: NavigationPathItem? = nil) {
+    init(destination: Destination, isActive: Binding<Bool>) {
         self.destination = destination
         self.isActive = isActive
-        self.navigationPathItem = navigationPathItem
-        
-        if #available(iOS 16.0, *), let item = navigationPathItem, isActive.wrappedValue {
-            DispatchQueue.main.async {
-                NavigationStorage.shared.add(navigationPathItem: item)
-            }
-        }
-        
     }
 
     func body(content: Content) -> some View {
@@ -42,7 +32,6 @@ struct NavigationModifier<Destination>: ViewModifier where Destination: View {
 }
 
 /// Модификатор навигации с моделью
-@available(iOS, introduced: 14.0, deprecated: 16.0, message: "Используй новые методы навигации для iOS16 и выше")
 struct NavigationModelModifier<Destination: View, Model: Any>: ViewModifier {
     let model: Model?
     let isActive: Binding<Bool>
@@ -78,18 +67,16 @@ struct NavigationModelModifier<Destination: View, Model: Any>: ViewModifier {
 // swiftlint:enable custom_navigation_link
 
 /// Расширение для навигации
-@available(iOS, introduced: 14.0, deprecated: 16.0, message: "Используй новые методы навигации для iOS16 и выше")
 public extension View {
     func navigation<Destination: View>(
         destination: Destination,
         isActive: Binding<Bool>,
-        id: String = Destination.navigationID
+        id: String = Destination.navigationID,
+        title: String = Destination.navigationID
     ) -> some View {
         if #available(iOS 16, *) {
-            let navigationPathItem = NavigationPathItem(id: id, title: id, isActive: isActive) { _ in
-                AnyView(destination)
-            }
-            return modifier(NavigationModifier(destination: destination, isActive: isActive, navigationPathItem: navigationPathItem))
+            addNavigationItem(id: id, title: title, destination: destination, isActive: isActive)
+            return self
         } else {
             return modifier(NavigationModifier(destination: destination, isActive: isActive))
         }
@@ -98,12 +85,49 @@ public extension View {
     func navigation<Destination: View, Model: Any>(
         model: Model?,
         isActive: Binding<Bool>,
+        id: String = Destination.navigationID,
+        title: String = Destination.navigationID,
         destinationHandler: @escaping (Model) -> (Destination)
     ) -> some View {
         if #available(iOS 16, *) {
+            addNavigationItem(id: id, title: title, isActive: isActive, model: model, destinationHandler: destinationHandler)
             return self
         } else {
             return modifier(NavigationModelModifier(model: model, isActive: isActive, destinationHandler: destinationHandler))
+        }
+    }
+    
+    private func addNavigationItem<Destination: View>(
+        id: String,
+        title: String,
+        destination: Destination,
+        isActive: Binding<Bool>
+    ) {
+        let navigationPathItem = NavigationPathItem(id: id, title: title, isActive: isActive) {
+            AnyView(destination)
+        }
+        addToPath(navigationPathItem, isActive: isActive.wrappedValue)
+    }
+    
+    private func addNavigationItem<Destination: View, Model: Any>(
+        id: String,
+        title: String,
+        isActive: Binding<Bool>,
+        model: Model?,
+        destinationHandler: @escaping (Model) -> (Destination)
+    ) {
+        guard let model else { return }
+        let navigationPathItem = NavigationPathItem(id: id, title: title, isActive: isActive) {
+            AnyView(destinationHandler(model))
+        }
+        addToPath(navigationPathItem, isActive: isActive.wrappedValue)
+        
+    }
+    
+    private func addToPath(_ navigationPathItem: NavigationPathItem, isActive: Bool) {
+        guard isActive else { return }
+        DispatchQueue.main.async {
+            NavigationStorage.shared.add(navigationPathItem: navigationPathItem)
         }
     }
 }

@@ -12,15 +12,13 @@ struct ContentView: View {
             if #available(iOS 16.0, *) {
                 NavigationStack(path: $storage.path) {
                     content
-                        .navigation(destination: FirstView(title: "Title"), isActive: $isFirstViewShown)
                         .navigationDestination(for: NavigationPathItem.self) { item in
-                            item.destination(item.model)
+                            item.destination()
                         }
                 }
             } else {
                 NavigationView {
                     content
-                        .navigation(destination: FirstView(title: "Title"), isActive: $isFirstViewShown)
                 }
             }
     }
@@ -41,6 +39,7 @@ struct ContentView: View {
             }
         }
         .ignoresSafeArea()
+        .navigation(destination: FirstView(title: "Title"), isActive: $isFirstViewShown)
     }
     
     @StateObject private var storage = NavigationStorage.shared
