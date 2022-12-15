@@ -15,14 +15,14 @@ final class NavigationPathItem: Identifiable, Hashable {
     /// Название экрана
     let title: String?
     /// Открыт ли экран
-    @Binding var isActive: Bool
+    var isActive: Binding<Bool>
     /// Создание экрана для перехода
     var destination: () -> AnyView
 
     init(id: String, title: String, isActive: Binding<Bool>, isShown: Bool = false, destination: @escaping () -> AnyView) {
         self.id = id
         self.title = title
-        self._isActive = isActive
+        self.isActive = isActive
         self.destination = destination
     }
     

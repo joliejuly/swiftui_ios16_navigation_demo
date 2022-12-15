@@ -22,7 +22,7 @@ final class NavigationStorage: ObservableObject {
 
     func popToRoot() {
         UIApplication.enableKeyWindowAnimation()
-        path.forEach { $0.isActive = false }
+        path.forEach { $0.isActive.wrappedValue = false }
         path.removeLast(path.count)
     }
     
@@ -30,7 +30,7 @@ final class NavigationStorage: ObservableObject {
         guard !path.isEmpty, index < path.count else { return }
         UIApplication.enableKeyWindowAnimation()
         for (idx, item) in path.enumerated() where idx >= index {
-            item.isActive = false
+            item.isActive.wrappedValue = false
         }
         path.removeLast(path.count - index)
     }
